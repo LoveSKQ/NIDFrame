@@ -1,7 +1,8 @@
-package com.rmj.nidframe;
+package com.rmj.nidframe.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.rmj.nidframe.R;
 
 public class MyActivity extends Activity {
     /**
