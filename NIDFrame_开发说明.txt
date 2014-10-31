@@ -1,0 +1,25 @@
+
+1、处理Http请求
+	a、每次发送请求时，新建WebInterfaceImpl对象，并调用相应接口即可。（无需使用线程或AsyncTask）
+	b、处理请求时重写父类的httpRequest***()系列方法即可。（重写方法需要先调用super(data)方法，一些公共通用的处理已经在父类中写好，例如ProgressDialog处理，无特殊处理可以不用重写）
+	c、服务器返回数据的数据结构类放在bean目录下
+	d、AppConfig里的WEB_INTERFACE参数控制是否访问服务器接口
+	e、Http请求的地址统一放到了constants目录下的RequestUrl类里面
+
+2、BaseActivity、BaseActivity
+	a、处理http请求的handler已定义好，如果子类需要使用Handler须重新创建一个Handler
+	b、提供加载数据时显示的ProgressDialog，并提供显示（showProgressDialog）和隐藏（hideProgressDialog）的方法
+	c、界面初始化相关工作放到initComponents方法中（包括TitleBar信息的设置），并在onCreate方法的合适位置调用
+	d、BaseActivity中提供onReturnClick方法，执行返回上一个Activity，直接调用即可
+	e、TitleBar相关内容，提供showTitleBar和getTitleBar方法
+	
+3、工具类***Utils
+	a、统一放到util目录下
+	b、整理代码的时候，方法里面的一些通用方法尽量提取出来，放到工具类里，方便后续重复利用
+
+4、界面布局
+	a、xml文件中的文本内容一定要放到string中（测试用的控件可以不用）
+
+5、规范
+	a、条件判断常量统一放到Constants类中，逻辑控制代码中不要出现数字
+	b、代码中的逻辑控制模块，尽量把每一系列的处理单独提出到一个方法中，逻辑处理部分尽可能的只体现逻辑控制，条理清晰
